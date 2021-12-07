@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  flemens-scores:
+    image: miwi94/flemens-scores:0.0.1-snapshot
+    ports:
+      - "443:443"
+    restart: always
