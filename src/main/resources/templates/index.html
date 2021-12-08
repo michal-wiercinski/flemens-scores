@@ -18,8 +18,8 @@
         <tbody>
         <tr th:each="match : ${competitionMatchResponse.matches()}">
             <td>
-                <p th:text="${#dates.format(match.utcDate(), 'dd.MM')}"></p>
-                <p th:text="${#dates.format(match.utcDate(), 'HH:mm')}"></p>
+                <span th:text="${#dates.format(match.utcDate(), 'dd.MM')}"></span>
+                <span th:text="${#dates.format(match.utcDate(), 'HH:mm')}"></span>
             </td>
             <td>
                 <div th:if="${match.score().winner().equals('HOME_TEAM')}">
