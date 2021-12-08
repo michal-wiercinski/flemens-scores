@@ -28,7 +28,6 @@ public class MatchController {
                 null,
                 null,
                 competition.currentSeason().currentMatchday());
-        System.out.println(competitionMatchRequest);
         CompetitionMatchResponse competitionMatchResponse = resultClient.getMatchesByCompetitionMatchRequest(competitionMatchRequest);
         model.addAttribute("competitionMatchResponse", competitionMatchResponse);
 

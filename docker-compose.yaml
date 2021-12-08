@@ -1,7 +1,7 @@
-version: '3.8'
+version: '3.9'
 services:
-  flemens-scores:
-    image: miwi94/flemens-scores
+  app:
+    build: .
     ports:
       - "8080:8080"
     restart: always
