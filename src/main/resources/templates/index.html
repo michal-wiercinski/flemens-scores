@@ -43,14 +43,6 @@
             <td>
                 <br>
                 <p th:text="${match.status()}"></p>
-                <!--<div th:switch="${match.status()}">
-                    <p th:case="${T(pl.mira.soccerscores.model.enums.StatusEnum).SCHEDULED}">Scheduled</p>
-                    <p th:case="${T(pl.mira.soccerscores.model.enums.StatusEnum).IN_PLAY}"
-                       th:text="${match.minute()} +'&apos;'"></p>
-                    <p th:case="${T(pl.mira.soccerscores.model.enums.StatusEnum).CANCELED}">Canceled</p>
-                    <p th:case="${T(pl.mira.soccerscores.model.enums.StatusEnum).FINISHED}">Finished</p>
-                    <p th:case="${T(pl.mira.soccerscores.model.enums.StatusEnum).POSTPONED}">Postponed</p>
-                </div>-->
             </td>
         </tr>
         </tbody>
