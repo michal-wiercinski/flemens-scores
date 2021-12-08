@@ -29,8 +29,8 @@ public class MatchController {
                 null,
                 competition.currentSeason().currentMatchday());
         CompetitionMatchResponse competitionMatchResponse = resultClient.getMatchesByCompetitionMatchRequest(competitionMatchRequest);
-        model.addAttribute("competitionMatchResponse", competitionMatchResponse);
 
+        model.addAttribute("competitionMatchResponse", competitionMatchResponse);
         return "index";
     }
 }

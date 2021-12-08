@@ -22,8 +22,19 @@
                 <p th:text="${#dates.format(match.utcDate(), 'HH:mm')}"></p>
             </td>
             <td>
-                <p th:text="${match.homeTeam().name()}"></p>
-                <p th:text="${match.awayTeam().name()}"></p>
+                <div th:if="${match.score().winner().equals('HOME_TEAM')}">
+                    <p class="font-weight-bold" th:text="${match.homeTeam().name().toUpperCase()}"></p>
+                    <p th:text="${match.awayTeam().name()}"></p>
+
+                </div>
+                <div th:if="${match.score().winner().equals('AWAY_TEAM')}">
+                    <p th:text="${match.homeTeam().name()}"></p>
+                    <p class="font-weight-bold" th:text="${match.awayTeam().name().toUpperCase()}"></p>
+                </div>
+                <div th:if="${match.score().winner().equals('DRAW')}">
+                    <p th:text="${match.homeTeam().name()}"></p>
+                    <p th:text="${match.awayTeam().name()}"></p>
+                </div>
             </td>
             <td>
                 <p th:text="${match.score().fullTime().homeTeam()}"></p>
