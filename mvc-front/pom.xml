@@ -2,35 +2,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>pl.mira</groupId>
-    <artifactId>flemens-scores</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>flemens-scores</name>
-    <description>flemens-scores</description>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>flyway</module>
-        <module>football-data-client</module>
-        <module>mvc-front</module>
-        <module>service</module>
-    </modules>
-
-<!--    <parent>
+    <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.6.1</version>
-        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;
-    </parent>-->
-<!--
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>pl.mira</groupId>
+    <artifactId>mvc-front</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>mvc-front</name>
+    <description>mvc-front</description>
     <properties>
         <java.version>17</java.version>
-        <docker.image.prefix>miwi94</docker.image.prefix>
     </properties>
-    -->
 
- <!--   <dependencies>
+    <dependencies>
+
+        <dependency>
+            <groupId>pl.mira</groupId>
+            <artifactId>service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -44,16 +38,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-    </dependencies>-->
 
-  <!--  <build>
+    </dependencies>
+
+<!--
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${project.parent.version}</version>
             </plugin>
         </plugins>
-    </build>-->
+    </build>
+-->
 
 </project>

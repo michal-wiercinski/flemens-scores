@@ -1,4 +1,4 @@
-package pl.mira.soccerscores.configuration;
+package pl.mira.footballdataclient.configuration;
 
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
