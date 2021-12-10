@@ -14,7 +14,7 @@ public class ParametersMapper {
         Map<String, String> vars = new HashMap<>();
 
         Optional.of(competitionMatchRequest)
-                .map(CompetitionMatchRequest::dateFrom)
+                .map(CompetitionMatchRequest::getDateFrom)
                 .ifPresentOrElse(date -> {
                             vars.put("dateFrom", date.toString());
                         },
@@ -23,7 +23,7 @@ public class ParametersMapper {
                         });
 
         Optional.of(competitionMatchRequest)
-                .map(CompetitionMatchRequest::dateTo)
+                .map(CompetitionMatchRequest::getDateTo)
                 .ifPresentOrElse(date -> {
                             vars.put("dateTo", date.toString());
                         },
@@ -32,7 +32,7 @@ public class ParametersMapper {
                         });
 
         Optional.of(competitionMatchRequest)
-                .map(CompetitionMatchRequest::statusEnum)
+                .map(CompetitionMatchRequest::getStatusEnum)
                 .ifPresentOrElse(statusEnum -> {
                             vars.put("status", statusEnum.toString());
                         },
@@ -41,18 +41,18 @@ public class ParametersMapper {
                         });
 
         Optional.of(competitionMatchRequest)
-                .map(CompetitionMatchRequest::matchDay)
+                .map(CompetitionMatchRequest::getMatchDay)
                 .ifPresentOrElse(matchDay -> {
-                            vars.put("matchday", String.valueOf(competitionMatchRequest.matchDay()));
+                            vars.put("matchday", String.valueOf(matchDay));
                         },
                         () -> {
                             vars.put("matchday", "");
                         });
 
         Optional.of(competitionMatchRequest)
-                .map(CompetitionMatchRequest::seasonYear)
+                .map(CompetitionMatchRequest::getSeasonYear)
                 .ifPresentOrElse(seasonYear -> {
-                            vars.put("season", String.valueOf(competitionMatchRequest.seasonYear()));
+                            vars.put("season", String.valueOf(seasonYear));
                         },
                         () -> {
                             vars.put("season", "");

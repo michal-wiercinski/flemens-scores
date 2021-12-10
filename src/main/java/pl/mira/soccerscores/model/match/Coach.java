@@ -1,8 +1,8 @@
 package pl.mira.soccerscores.model.match;
-
-public record Coach
-        (int id,
-         String name,
-         String countryOfBirth,
-         String nationality) {
+ 
+public class Coach {
+        private int id;
+         private String name;
+         private String countryOfBirth;
+         private String nationality;
 }

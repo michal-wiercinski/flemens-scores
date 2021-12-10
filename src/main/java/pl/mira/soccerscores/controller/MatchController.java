@@ -23,11 +23,11 @@ public class MatchController {
         Competition competition = resultClient.getCompetitionById(CompetitionEnum.PREMIER_LEAGUE.getId());
         CompetitionMatchRequest competitionMatchRequest = new CompetitionMatchRequest(
                 CompetitionEnum.PREMIER_LEAGUE.getCode(),
-                competition.currentSeason().startDate().getYear(),
+                competition.getCurrentSeason().getStartDate().getYear(),
                 null,
                 null,
                 null,
-                competition.currentSeason().currentMatchday());
+                competition.getCurrentSeason().getCurrentMatchday());
         CompetitionMatchResponse competitionMatchResponse = resultClient.getMatchesByCompetitionMatchRequest(competitionMatchRequest);
 
         model.addAttribute("competitionMatchResponse", competitionMatchResponse);

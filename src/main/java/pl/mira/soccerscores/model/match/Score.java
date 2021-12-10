@@ -1,10 +1,15 @@
 package pl.mira.soccerscores.model.match;
 
-public record Score
-        (String winner,
-         String duration,
-         Result fullTime,
-         Result halfTime,
-         Result extraTime,
-         Result penalties) {
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Score {
+        private String winner;
+        private String duration;
+        private Result fullTime;
+        private Result halfTime;
+        private Result extraTime;
+        private Result penalties;
 }

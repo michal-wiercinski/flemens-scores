@@ -1,7 +1,7 @@
 package pl.mira.soccerscores.model;
 
-public record Area
-        (int id,
-         String name,
-         String countryCode) {
+public class Area {
+    private int id;
+    private String name;
+    private String countryCode;
 }

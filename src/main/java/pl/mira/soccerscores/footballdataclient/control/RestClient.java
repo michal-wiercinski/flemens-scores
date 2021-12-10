@@ -52,7 +52,7 @@ public class RestClient {
     }
 
     private String getCompetitionMatchRequestUrl(CompetitionMatchRequest competitionMatchRequest) {
-        return getBasicUrl() + "competitions/" + competitionMatchRequest.competitionCode() + "/matches?" +
+        return getBasicUrl() + "competitions/" + competitionMatchRequest.getCompetitionCode() + "/matches?" +
                 "dateFrom={dateFrom}&dateTo={dateTo}&status={status}&matchday={matchday}&season={season}";
     }
 

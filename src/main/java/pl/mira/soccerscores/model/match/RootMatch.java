@@ -1,6 +1,6 @@
 package pl.mira.soccerscores.model.match;
 
-public record RootMatch(
-        Head2head head2head,
-        Match match) {
+public class RootMatch {
+    private Head2head head2head;
+    private Match match;
 }

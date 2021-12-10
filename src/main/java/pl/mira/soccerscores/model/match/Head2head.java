@@ -1,8 +1,8 @@
 package pl.mira.soccerscores.model.match;
 
-public record Head2head
-        (int numberOfMatches,
-         int totalGoals,
-         MatchTeam homeTeam,
-         MatchTeam awayTeam) {
+public class Head2head {
+        private int numberOfMatches;
+         private int totalGoals;
+         private MatchTeam homeTeam;
+         private MatchTeam awayTeam;
 }

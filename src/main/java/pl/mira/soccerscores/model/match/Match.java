@@ -1,29 +1,33 @@
 package pl.mira.soccerscores.model.match;
 
+import lombok.Getter;
+import lombok.Setter;
 import pl.mira.soccerscores.model.Competition;
 import pl.mira.soccerscores.model.Season;
 
 import java.util.Date;
 import java.util.List;
 
-public record Match
-        (int id,
-         Competition competition,
-         Season season,
-         Date utcDate,
-         String status,
-         int minute,
-         int attendance,
-         String venue,
-         int matchday,
-         String stage,
-         String group,
-         Date lastUpdated,
-         MatchTeam homeTeam,
-         MatchTeam awayTeam,
-         Score score,
-         List<Goal> goals,
-         List<Booking> bookings,
-         List<Substitution> substitutions,
-         List<Referee> referees) {
+@Getter
+@Setter
+public class Match {
+        private int id;
+         private Competition competition;
+         private Season season;
+         private Date utcDate;
+         private String status;
+         private int minute;
+         private int attendance;
+         private String venue;
+         private int matchday;
+         private String stage;
+         private String group;
+         private Date lastUpdated;
+         private MatchTeam homeTeam;
+         private MatchTeam awayTeam;
+         private Score score;
+         private List<Goal> goals;
+         private List<Booking> bookings;
+         private List<Substitution> substitutions;
+         private List<Referee> referees;
 }

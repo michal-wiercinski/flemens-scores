@@ -2,12 +2,12 @@ package pl.mira.soccerscores.model;
 
 import java.util.Date;
 
-public record Player
-    (int id,
-    String name,
-    String position,
-    Date dateOfBirth,
-    String countryOfBirth,
-    String nationality,
-    String role) {
+public class Player {
+    private  int id;
+    private  String name;
+    private  String position;
+    private  Date dateOfBirth;
+    private  String countryOfBirth;
+    private  String nationality;
+    private  String role;
 }

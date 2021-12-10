@@ -1,10 +1,15 @@
 package pl.mira.soccerscores.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
-public record Season
-        (int id,
-         LocalDate startDate,
-         LocalDate endDate,
-         int currentMatchday) {
+@Getter
+@Setter
+public class Season {
+    private int id;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private int currentMatchday;
 }

@@ -1,6 +1,11 @@
 package pl.mira.soccerscores.model;
 
-public record Filters
-        (String dateFrom,
-         String dateTo) {
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Filters {
+    private String dateFrom;
+    private String dateTo;
 }

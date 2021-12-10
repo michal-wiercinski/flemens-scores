@@ -18,27 +18,27 @@
         <tbody>
         <tr th:each="match : ${competitionMatchResponse.matches()}">
             <td>
-                <span th:text="${#dates.format(match.utcDate(), 'dd.MM')}"></span>
-                <span th:text="${#dates.format(match.utcDate(), 'HH:mm')}"></span>
+                <span th:text="${#dates.format(match.getUtcDate(), 'dd.MM')}"></span>
+                <span th:text="${#dates.format(match.getUtcDate(), 'HH:mm')}"></span>
             </td>
             <td>
-                <div th:if="${match.score().winner().equals('HOME_TEAM')}">
-                    <span th:text="${match.homeTeam().name().toUpperCase()}"></span>
-                    <p th:text="${match.awayTeam().name()}"></p>
+                <div th:if="${match.getScoree().getWinner().equals('HOME_TEAM')}">
+                    <span th:text="${match.getHomeTeam().getName().toUpperCase()}"></span>
+                    <p th:text="${match.getAwayTeam).getName()}"></p>
 
                 </div>
                 <div th:if="${match.score().winner().equals('AWAY_TEAM')}">
                     <p th:text="${match.homeTeam().name()}"></p>
-                    <span th:text="${match.awayTeam().name().toUpperCase()}"></span>
+                    <span th:text="${${match.getAwayTeam).getName()}toUpperCase()}"></span>
                 </div>
                 <div th:if="${match.score().winner().equals('DRAW')}">
                     <p th:text="${match.homeTeam().name()}"></p>
-                    <p th:text="${match.awayTeam().name()}"></p>
+                    <p th:text="${${match.getAwayTeam).getName()}}"></p>
                 </div>
             </td>
             <td>
                 <p th:text="${match.score().fullTime().homeTeam()}"></p>
-                <p th:text="${match.score().fullTime().awayTeam()}"></p>
+                <p th:text="${${match.getAwayTeam).getName()}}"></p>
             </td>
             <td>
                 <br>
