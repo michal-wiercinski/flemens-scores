@@ -18,7 +18,7 @@ node {
   
     stage('deploy') {
      def webAppResourceGroup = 'flemens_scores_rg'
-      def webAppName = 'flemens-scores-webapp'
+      def webAppName = 'flemens-scores-webappv2'
       def acrName = 'FlemensScoresACR'
       def imageName = 'flemens-scores'
       // generate version, it's important to remove the trailing new line in git describe output
