@@ -18,7 +18,7 @@ node {
       // login docker
         // docker.withRegistry only supports credential ID, so use native docker command to login
         // you can also use docker.withRegistry if you add a credential
-        sh "docker login -u $DOCKERHUB_ID -p $DOCKERHUB_PW miwi94"
+        sh "docker login -u $DOCKERHUB_ID -p $DOCKERHUB_PW"
         // build image
         def imageWithTag = "$loginServer/$imageName:latest"
         def image = docker.build imageWithTag
