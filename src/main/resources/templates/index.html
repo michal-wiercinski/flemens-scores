@@ -10,39 +10,57 @@
 <div class="container-lg pt-5">
     <table class="table table-hover">
         <thead>
-       <!-- <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>-->
+        <!-- <th scope="col"></th>
+         <th scope="col"></th>
+         <th scope="col"></th>
+         <th scope="col"></th>-->
         </thead>
         <tbody>
-        <tr th:each="match : ${competitionMatchResponse.matches()}">
+        <tr th:each="match : ${competitionMatchResponse.getMatches()}">
             <td>
                 <span th:text="${#dates.format(match.getUtcDate(), 'dd.MM')}"></span>
                 <span th:text="${#dates.format(match.getUtcDate(), 'HH:mm')}"></span>
             </td>
             <td>
-                <div th:if="${match.getScoree().getWinner().equals('HOME_TEAM')}">
-                    <span th:text="${match.getHomeTeam().getName().toUpperCase()}"></span>
-                    <p th:text="${match.getAwayTeam).getName()}"></p>
 
-                </div>
-                <div th:if="${match.score().winner().equals('AWAY_TEAM')}">
-                    <p th:text="${match.homeTeam().name()}"></p>
-                    <span th:text="${${match.getAwayTeam).getName()}toUpperCase()}"></span>
-                </div>
-                <div th:if="${match.score().winner().equals('DRAW')}">
-                    <p th:text="${match.homeTeam().name()}"></p>
-                    <p th:text="${${match.getAwayTeam).getName()}}"></p>
+                <div th:switch="${match.getScore().getWinner()}">
+                    <div th:case="null">
+                        <p th:text="${match.getHomeTeam().getName()}"></p>
+                        <p th:text="${match.getAwayTeam().getName()}"></p>
+                    </div>
+                    <div th:case="'DRAW'">
+                        <p th:text="${match.getHomeTeam().getName()}"></p>
+                        <p th:text="${match.getAwayTeam().getName()}"></p>
+                    </div>
+                    <div th:case="'HOME_TEAM'">
+                        <span th:text="${match.getHomeTeam().getName().toUpperCase()}"></span>
+                        <p th:text="${match.getAwayTeam().getName()}"></p>
+                    </div>
+                    <div th:case="'AWAY_TEAM'">
+                        <p th:text="${match.getHomeTeam().getName()}"></p>
+                        <span th:text="${match.getAwayTeam().getName().toUpperCase()}"></span>
+                    </div>
                 </div>
             </td>
             <td>
-                <p th:text="${match.score().fullTime().homeTeam()}"></p>
-                <p th:text="${${match.getAwayTeam).getName()}}"></p>
+                <p th:text="${match.getScore().getFullTime().getHomeTeam()}"></p>
+                <p th:text="${match.getScore().getFullTime().getAwayTeam()}"></p>
             </td>
             <td>
                 <br>
-                <p th:text="${match.status()}"></p>
+                <p th:text="${match.getStatus()}"></p>
+               <!-- <div th:switch="${match.getStatus()}">
+                    <div th:case="'FINISHED'">
+                        <p th:text="#{match.status.finished}"></p>
+                    </div>
+                    <div th:case="'SCHEDULED'">
+                        <p th:text="#{match.status.scheduled}"></p>
+                    </div>
+                    <div th:case="'IN_PLAY'">
+                        <p th:text="#{match.status.in-play} + ${match.minute()}"></p>
+                    </div>
+                </div>-->
+
             </td>
         </tr>
         </tbody>
