@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <link th:replace="./parts/metadata"/>
     <title>FlemensScores</title>
 
@@ -8,6 +9,7 @@
 <body>
 <link th:replace="./parts/navbar"/>
 <div class="container-lg pt-5">
+
     <table class="table table-hover">
         <thead>
        <!-- <th scope="col"></th>
@@ -22,18 +24,24 @@
                 <span th:text="${#dates.format(match.utcDate(), 'HH:mm')}"></span>
             </td>
             <td>
-                <div th:if="${match.score().winner().equals('HOME_TEAM')}">
-                    <span th:text="${match.homeTeam().name().toUpperCase()}"></span>
-                    <p th:text="${match.awayTeam().name()}"></p>
 
-                </div>
-                <div th:if="${match.score().winner().equals('AWAY_TEAM')}">
-                    <p th:text="${match.homeTeam().name()}"></p>
-                    <span th:text="${match.awayTeam().name().toUpperCase()}"></span>
-                </div>
-                <div th:if="${match.score().winner().equals('DRAW')}">
-                    <p th:text="${match.homeTeam().name()}"></p>
-                    <p th:text="${match.awayTeam().name()}"></p>
+                <div th:switch="${match.score().winner()}">
+                    <div th:case="null">
+                        <p th:text="${match.homeTeam().name()}"></p>
+                        <p th:text="${match.awayTeam().name()}"></p>
+                    </div>
+                    <div th:case="'DRAW'">
+                        <p th:text="${match.homeTeam().name()}"></p>
+                        <p th:text="${match.awayTeam().name()}"></p>
+                    </div>
+                    <div th:case="'HOME_TEAM'">
+                        <span th:text="${match.homeTeam().name().toUpperCase()}"></span>
+                        <p th:text="${match.awayTeam().name()}"></p>
+                    </div>
+                    <div th:case="'AWAY_TEAM'">
+                        <p th:text="${match.homeTeam().name()}"></p>
+                        <span th:text="${match.awayTeam().name().toUpperCase()}"></span>
+                    </div>
                 </div>
             </td>
             <td>
@@ -42,7 +50,18 @@
             </td>
             <td>
                 <br>
-                <p th:text="${match.status()}"></p>
+                <div th:switch="${match.status()}">
+                    <div th:case="'FINISHED'">
+                        <p th:text="#{match.status.finished}"></p>
+                    </div>
+                    <div th:case="'SCHEDULED'">
+                        <p th:text="#{match.status.scheduled}"></p>
+                    </div>
+                    <div th:case="'IN_PLAY'">
+                        <p th:text="#{match.status.in-play} + ${match.minute()}"></p>
+                    </div>
+                </div>
+
             </td>
         </tr>
         </tbody>
