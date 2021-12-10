@@ -13,6 +13,8 @@ node {
     }
   
     stage('build') {
+      sh 'mvn -version'
+      sh 'java -version'
       sh 'sudo mvn clean package'
     }
   
