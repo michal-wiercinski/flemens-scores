@@ -13,7 +13,7 @@ node {
     }
   
     stage('build') {
-      sh 'mvn clean package'
+      sh 'sudo mvn clean package'
     }
   
     stage('deploy') {
