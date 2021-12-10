@@ -10,8 +10,8 @@ node {
     }
   
     stage('deploy') {
-      def webAppResourceGroup = 'Jenkins-VM_group'
-      def webAppName = 'FlemensScoreApp'
+      def webAppResourceGroup = 'flemens_scores_rg'
+      def webAppName = 'flemens-scores-app'
       def acrName = 'FlemensScoresACR'
       def imageName = 'flemens-scores'
       def imageWithTag = "miwi94/$imageName:latest"
