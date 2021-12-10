@@ -20,7 +20,7 @@ node {
         // you can also use docker.withRegistry if you add a credential
         sh "docker login -u $DOCKERHUB_ID -p $DOCKERHUB_PW"
         // build image
-        def imageWithTag = "$loginServer/$imageName:latest"
+        def imageWithTag = "miwi94/$imageName:latest"
         def image = docker.build imageWithTag
         // push image
         image.push()
