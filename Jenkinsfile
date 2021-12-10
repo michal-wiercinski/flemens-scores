@@ -19,7 +19,7 @@ node {
     stage('deploy') {
       def webAppResourceGroup = 'Jenkins-VM_group'
       def webAppName = 'FlemensScoreApp'
-      def acrName = 'FlemensScoreACR'
+      def acrName = 'FlemensScoresACR'
       def imageName = 'flemens-scores'
       // generate version, it's important to remove the trailing new line in git describe output
       def version = sh script: 'git describe | tr -d "\n"', returnStdout: true
