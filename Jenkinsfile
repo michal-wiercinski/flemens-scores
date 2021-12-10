@@ -17,13 +17,13 @@ node {
     }
   
     stage('deploy') {
-      def webAppResourceGroup = 'Jenkins-VM_group'
-      def webAppName = 'FlemensScoreApp'
-      def acrName = 'FlemensScoreACR'
+      def webAppResourceGroup = 'flemens_scores_rg'
+      def webAppName = 'flemens-scores-app'
+      def acrName = 'FlemensScoresACR'
       def imageName = 'flemens-scores'
       // generate version, it's important to remove the trailing new line in git describe output
       def version = sh script: 'git describe | tr -d "\n"', returnStdout: true
-      withCredentials([usernamePassword(credentialsId: 'f5047450-c4fd-4327-8568-760948c77577', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+      withCredentials([usernamePassword(credentialsId: '6dcf134c-d73a-42a0-a7c6-fc72b1b176ab', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
         // login Azure
         sh '''
           az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
