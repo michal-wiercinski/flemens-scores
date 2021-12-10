@@ -33,7 +33,7 @@ node {
           az account set -s $AZURE_SUBSCRIPTION_ID
         '''
         // update web app docker settings
-        sh "az webapp config container set -g $webAppResourceGroup -n $webAppName -c $imageWithTag -r http://$loginServer -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET"
+        sh "az webapp config container set -g $webAppResourceGroup -n $webAppName -c $imageName -r $imageWithTag -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET"
         // log out
         sh 'az logout'
         sh "docker logout $loginServer"
