@@ -14,7 +14,9 @@ node {
       def webAppName = 'FlemensScoreApp'
       def acrName = 'FlemensScoresACR'
       def imageName = 'flemens-scores'
-      withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKERHUB_PW', usernameVariable: 'DOCKERHUB_ID')]) {
+      
+      withCredentials([usernamePassword(credentialsId: 'AzureServicePrincipal', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKERHUB_PW', usernameVariable: 'DOCKERHUB_ID')]) {
       // login docker
         // docker.withRegistry only supports credential ID, so use native docker command to login
         // you can also use docker.withRegistry if you add a credential
@@ -25,8 +27,6 @@ node {
         // push image
         image.push()
       }
-      withCredentials([usernamePassword(credentialsId: 'AzureServicePrincipal', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
-        // login Azure
         sh '''
           az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
           az account set -s $AZURE_SUBSCRIPTION_ID
