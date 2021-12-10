@@ -15,6 +15,7 @@ node {
       def acrName = 'FlemensScoresACR'
       def imageName = 'flemens-scores'
       def imageWithTag = "miwi94/$imageName:latest"
+      def dockerUrl = "https://registry.hub.docker.com"
       
      withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKERHUB_PW', usernameVariable: 'DOCKERHUB_ID')]) {
       // login docker
@@ -33,7 +34,7 @@ node {
           az account set -s $AZURE_SUBSCRIPTION_ID
         '''
         // update web app docker settings
-        sh "az webapp config container set -g $webAppResourceGroup -n $webAppName -c $imageName -r $imageWithTag -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET"
+        sh "az webapp config container set -g $webAppResourceGroup -n $webAppName -c $imageName -r $dockerUrl -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET"
         // log out
         sh 'az logout'
         sh "docker logout"
