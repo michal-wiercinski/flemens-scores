@@ -37,7 +37,7 @@ node {
         // you can also use docker.withRegistry if you add a credential
         sh "docker login -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET $loginServer"
         // build image
-        def imageWithTag = "$loginServer/$imageName:latest"
+        def imageWithTag = "$loginServer/$imageName:ver$BUILD_NUMBER"
         def image = docker.build imageWithTag
         // push image
         image.push()
