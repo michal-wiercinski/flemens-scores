@@ -1,5 +1,10 @@
 import groovy.json.JsonSlurper
 
+def imageWithTag = ''
+def loginServer = ''
+def webAppResourceGroup = 'flemens_scores_rg'
+def webAppName = 'flemens-scores-webappv2'
+
 def getAcrLoginServer(def acrSettingsJson) {
   def acrSettings = new JsonSlurper().parseText(acrSettingsJson)
   return acrSettings.loginServer
@@ -13,7 +18,7 @@ node {
     }
   
     stage('build') {
-        def webAppResourceGroup = 'flemens_scores_rg'
+      def webAppResourceGroup = 'flemens_scores_rg'
       def webAppName = 'flemens-scores-webappv2'
       def acrName = 'FlemensScoresACR'
       def imageName = 'flemens-scores'
