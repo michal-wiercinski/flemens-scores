@@ -40,10 +40,15 @@ node {
         def image = docker.build imageWithTag
         // push image
         image.push()
+      }
     }
   
     stage('deploy') {
-        
+        withCredentials([usernamePassword(credentialsId: 'AzureServicePrincipal', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+        // login Azure
+        sh '''
+          az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
+          az account set -s $AZURE_SUBSCRIPTION_ID
         // update web app docker settings
         sh "az webapp config container set -g $webAppResourceGroup -n $webAppName -c $imageWithTag -r http://$loginServer -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET"
         // log out
