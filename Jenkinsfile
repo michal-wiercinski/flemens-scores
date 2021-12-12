@@ -44,7 +44,7 @@ node {
     }
   
     stage('deploy') {
-        withCredentials([usernamePassword(credentialsId: 'AzureServicePrincipal', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+        
         // login Azure
         sh '''
           az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
@@ -55,7 +55,7 @@ node {
         // log out
         sh 'az logout'
         sh "docker logout $loginServer"
-      }
+      
     }
   }
 }
