@@ -18,8 +18,6 @@ node {
     }
   
     stage('build') {
-      def webAppResourceGroup = 'flemens_scores_rg'
-      def webAppName = 'flemens-scores-webappv2'
       def acrName = 'FlemensScoresACR'
       def imageName = 'flemens-scores'
       // generate version, it's important to remove the trailing new line in git describe output
@@ -32,13 +30,13 @@ node {
         '''
          // get login server
         def acrSettingsJson = sh script: "az acr show -n $acrName", returnStdout: true
-        def loginServer = getAcrLoginServer acrSettingsJson
+        loginServer = getAcrLoginServer acrSettingsJson
         // login docker
         // docker.withRegistry only supports credential ID, so use native docker command to login
         // you can also use docker.withRegistry if you add a credential
         sh "docker login -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET $loginServer"
         // build image
-        def imageWithTag = "$loginServer/$imageName:ver$BUILD_NUMBER"
+        imageWithTag = "$loginServer/$imageName:ver$BUILD_NUMBER"
         def image = docker.build imageWithTag
         // push image
         image.push()
