@@ -13,11 +13,7 @@ node {
     }
   
     stage('build') {
-      sh 'mvn clean package'
-    }
-  
-    stage('deploy') {
-     def webAppResourceGroup = 'flemens_scores_rg'
+        def webAppResourceGroup = 'flemens_scores_rg'
       def webAppName = 'flemens-scores-webappv2'
       def acrName = 'FlemensScoresACR'
       def imageName = 'flemens-scores'
@@ -39,6 +35,9 @@ node {
         // build image
         def imageWithTag = "$loginServer/$imageName:ver$BUILD_NUMBER"
         def image = docker.build imageWithTag
+    }
+  
+    stage('deploy') {
         // push image
         image.push()
         // update web app docker settings
