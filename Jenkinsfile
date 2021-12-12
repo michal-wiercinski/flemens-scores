@@ -35,11 +35,12 @@ node {
         // build image
         def imageWithTag = "$loginServer/$imageName:ver$BUILD_NUMBER"
         def image = docker.build imageWithTag
+        // push image
+        image.push()
     }
   
     stage('deploy') {
-        // push image
-        image.push()
+        
         // update web app docker settings
         sh "az webapp config container set -g $webAppResourceGroup -n $webAppName -c $imageWithTag -r http://$loginServer -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET"
         // log out
