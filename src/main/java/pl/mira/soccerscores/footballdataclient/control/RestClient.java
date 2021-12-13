@@ -8,6 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import pl.mira.soccerscores.footballdataclient.entity.request.CompetitionMatchRequest;
+import pl.mira.soccerscores.footballdataclient.entity.response.BasicCompetitionMatchResponse;
 import pl.mira.soccerscores.footballdataclient.entity.response.CompetitionMatchResponse;
 import pl.mira.soccerscores.model.Competition;
 
@@ -51,9 +52,43 @@ public class RestClient {
                 .getBody();
     }
 
+    public BasicCompetitionMatchResponse getMatchesSimpleRequest() {
+        HttpEntity httpEntity = getHttpEntity();
+
+        return restTemplate.exchange(getAllMatchesFromToday(),
+                        HttpMethod.GET,
+                        httpEntity,
+                        new ParameterizedTypeReference<BasicCompetitionMatchResponse>() {
+                        })
+                .getBody();
+    }
+
+    public BasicCompetitionMatchResponse getBasicCompetitionMatchesRequest(CompetitionMatchRequest competitionMatchRequest) {
+        HttpEntity httpEntity = getHttpEntity();
+
+        Map<String, String> vars = parametersMapper.getCompetitionMatchRequestMap(competitionMatchRequest);
+
+        return restTemplate.exchange(getBasicCompetitionMatchRequestUrl(competitionMatchRequest),
+                        HttpMethod.GET,
+                        httpEntity,
+                        new ParameterizedTypeReference<BasicCompetitionMatchResponse>() {
+                        },
+                        vars)
+                .getBody();
+    }
+
     private String getCompetitionMatchRequestUrl(CompetitionMatchRequest competitionMatchRequest) {
         return getBasicUrl() + "competitions/" + competitionMatchRequest.competitionCode() + "/matches?" +
                 "dateFrom={dateFrom}&dateTo={dateTo}&status={status}&matchday={matchday}&season={season}";
+    }
+
+    private String getBasicCompetitionMatchRequestUrl(CompetitionMatchRequest competitionMatchRequest) {
+        return getBasicUrl() + "/matches?" +
+                "dateFrom={dateFrom}&dateTo={dateTo}&status={status}&matchday={matchday}&season={season}";
+    }
+
+    private String getAllMatchesFromToday() {
+        return getBasicUrl() + "/matches?";
     }
 
     private String getBasicUrl() {
