@@ -2,16 +2,11 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="#">FlemensScores</a>
         <div class="float-right">
-           <!-- <span th:text="#{lang.change}"></span>-->
-            <!--  <select id="locales">
-                  <option value="pl" selected th:text="#{lang.pl}"></option>
-                  <option value="en" th:text="#{lang.en}"></option>
-              </select>-->
             <div id="locales">
-                <img onClick="changeLanguage('en')" src="../../static/icon/96304_of_flag_england_icon.png" th:src="@{/icon/96304_of_flag_england_icon.png}"  style="width:42px;height:42px;" alt="">
-                <img onClick="changeLanguage('pl')" src="../../static/icon/96372_of_flag_poland_icon.png" th:src="@{/icon/96372_of_flag_poland_icon.png}" style="width:42px;height:42px;" alt="">
-
-                <!-- <option value="en" th:text="#{lang.en}"></option>-->
+                <img onClick="changeLanguage('en')" th:src="@{/icon/96304_of_flag_england_icon.png}"
+                     style="width:42px;height:42px;" alt="">
+                <img onClick="changeLanguage('pl')" th:src="@{/icon/96372_of_flag_poland_icon.png}"
+                     style="width:42px;height:42px;" alt="">
             </div>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"

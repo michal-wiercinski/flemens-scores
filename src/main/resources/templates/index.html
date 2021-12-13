@@ -12,10 +12,6 @@
 
     <table class="table table-hover">
         <thead>
-       <!-- <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>-->
         </thead>
         <tbody>
         <tr th:each="match : ${competitionMatchResponse.matches()}">
@@ -57,11 +53,19 @@
                     <div th:case="'SCHEDULED'">
                         <p th:text="#{match.status.scheduled}"></p>
                     </div>
+                    <div th:case="'POSTPONED'">
+                        <p th:text="#{match.status.postponed}"></p>
+                    </div>
+                    <div th:case="'SUSPENDED'">
+                        <p th:text="#{match.status.suspended}"></p>
+                    </div>
+                    <div th:case="'CANCELED'">
+                        <p th:text="#{match.status.canceled}"></p>
+                    </div>
                     <div th:case="'IN_PLAY'">
                         <p th:text="#{match.status.in-play} + ${match.minute()}"></p>
                     </div>
                 </div>
-
             </td>
         </tr>
         </tbody>

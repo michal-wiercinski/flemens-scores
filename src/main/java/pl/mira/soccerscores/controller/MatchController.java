@@ -3,22 +3,29 @@ package pl.mira.soccerscores.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import pl.mira.soccerscores.footballdataclient.control.RestClient;
+import pl.mira.soccerscores.footballdataclient.boundary.FootballDataService;
 import pl.mira.soccerscores.footballdataclient.entity.request.CompetitionMatchRequest;
+import pl.mira.soccerscores.footballdataclient.entity.response.BasicCompetitionMatchResponse;
 import pl.mira.soccerscores.footballdataclient.entity.response.CompetitionMatchResponse;
 import pl.mira.soccerscores.model.Competition;
-import pl.mira.soccerscores.model.enums.CompetitionEnum;
+import pl.mira.soccerscores.model.match.Match;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 public class MatchController {
 
-    private final RestClient resultClient;
+    private final FootballDataService footballDataService;
 
-    public MatchController(final RestClient resultClient) {
-        this.resultClient = resultClient;
+    public MatchController(FootballDataService footballDataService) {
+        this.footballDataService = footballDataService;
     }
 
-    @GetMapping
+/*    @GetMapping
     public String getPLMatch(Model model) {
         Competition competition = resultClient.getCompetitionById(CompetitionEnum.PREMIER_LEAGUE.getId());
         CompetitionMatchRequest competitionMatchRequest = new CompetitionMatchRequest(
@@ -31,5 +38,21 @@ public class MatchController {
         CompetitionMatchResponse competitionMatchResponse = resultClient.getMatchesByCompetitionMatchRequest(competitionMatchRequest);
         model.addAttribute("competitionMatchResponse", competitionMatchResponse);
         return "index";
+    }   */
+
+    @GetMapping
+    public String getAllMatchToday(Model model) {
+        LocalDate currentDate = LocalDate.now();
+        CompetitionMatchRequest competitionMatchRequest = new CompetitionMatchRequest(
+                null,
+                null,
+                null,
+                currentDate,
+                currentDate.plusDays(3),
+                null);
+        BasicCompetitionMatchResponse competitionMatchResponse = footballDataService.getBasicCompetitionMatchResponse(competitionMatchRequest);
+        model.addAttribute("competitionMatchResponse", competitionMatchResponse);
+        return "index";
     }
+
 }
