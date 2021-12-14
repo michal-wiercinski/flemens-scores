@@ -62,8 +62,12 @@
                     <div th:case="'CANCELED'">
                         <p th:text="#{match.status.canceled}"></p>
                     </div>
+                    <div th:case="'PAUSED'">
+                        <p th:text="#{match.status.paused}"></p>
+                    </div>
                     <div th:case="'IN_PLAY'">
-                        <p th:text="#{match.status.in-play} + ${match.minute()}"></p>
+              <!--          <p th:text="#{match.status.in-play} + '&nbsp;&nbsp;'"></p>-->
+                        <p th:text="#{match.status.in-play}"></p>
                     </div>
                 </div>
             </td>
