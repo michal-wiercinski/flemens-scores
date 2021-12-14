@@ -6,15 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import pl.mira.soccerscores.footballdataclient.boundary.FootballDataService;
 import pl.mira.soccerscores.footballdataclient.entity.request.CompetitionMatchRequest;
 import pl.mira.soccerscores.footballdataclient.entity.response.BasicCompetitionMatchResponse;
-import pl.mira.soccerscores.footballdataclient.entity.response.CompetitionMatchResponse;
-import pl.mira.soccerscores.model.Competition;
-import pl.mira.soccerscores.model.match.Match;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Controller
 public class MatchController {
