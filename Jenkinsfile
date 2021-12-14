@@ -1,7 +1,7 @@
 
 import groovy.json.JsonSlurper
 
-def imageWithTag = ''
+def imageWithTag = ' '
 def loginServer = ''
 def webAppResourceGroup = 'flemens_scores_rg'
 def webAppName = 'flemens-scores-webappv2'
