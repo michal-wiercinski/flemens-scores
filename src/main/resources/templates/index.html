@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link th:replace="./parts/metadata"/>
+    <meta charset="UTF-8">
     <title>FlemensScores</title>
 
 </head>
@@ -44,7 +45,30 @@
             </td>
             <td>
                 <br>
-                <p th:text="${match.status()}"></p>
+                <div th:switch="${match.status()}">
+                    <div th:case="'FINISHED'">
+                        <p th:text="#{match.status.finished}"></p>
+                    </div>
+                    <div th:case="'SCHEDULED'">
+                        <p th:text="#{match.status.scheduled}"></p>
+                    </div>
+                    <div th:case="'POSTPONED'">
+                        <p th:text="#{match.status.postponed}"></p>
+                    </div>
+                    <div th:case="'SUSPENDED'">
+                        <p th:text="#{match.status.suspended}"></p>
+                    </div>
+                    <div th:case="'CANCELED'">
+                        <p th:text="#{match.status.canceled}"></p>
+                    </div>
+                    <div th:case="'PAUSED'">
+                        <p th:text="#{match.status.paused}"></p>
+                    </div>
+                    <div th:case="'IN_PLAY'">
+              <!--          <p th:text="#{match.status.in-play} + '&nbsp;&nbsp;'"></p>-->
+                        <p th:text="#{match.status.in-play}"></p>
+                    </div>
+                </div>
             </td>
         </tr>
         </tbody>
