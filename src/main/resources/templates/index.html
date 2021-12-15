@@ -44,10 +44,8 @@
                 <p th:text="${match.score().fullTime().awayTeam()}"></p>
             </td>
             <td>
-
                 <br>
-                <p th:text="${match.status()}"></p>
-              <!--  <div th:switch="${match.status()}">
+                <div th:switch="${match.status()}">
                     <div th:case="'FINISHED'">
                         <p th:text="#{match.status.finished}"></p>
                     </div>
@@ -67,10 +65,10 @@
                         <p th:text="#{match.status.paused}"></p>
                     </div>
                     <div th:case="'IN_PLAY'">
-              &lt;!&ndash;          <p th:text="#{match.status.in-play} + '&nbsp;&nbsp;'"></p>&ndash;&gt;
+              <!--          <p th:text="#{match.status.in-play} + '&nbsp;&nbsp;'"></p>-->
                         <p th:text="#{match.status.in-play}"></p>
                     </div>
-                </div>-->
+                </div>
             </td>
         </tr>
         </tbody>
