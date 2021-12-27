@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import pl.mira.soccerscores.footballdataclient.entity.request.CompetitionMatchRequest;
 import pl.mira.soccerscores.footballdataclient.entity.response.BasicCompetitionMatchResponse;
 import pl.mira.soccerscores.footballdataclient.entity.response.CompetitionMatchResponse;
-import pl.mira.soccerscores.model.Competition;
+import pl.mira.soccerscores.footballdataclient.model.Competition;
 
 import java.util.*;
 

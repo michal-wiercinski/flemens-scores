@@ -1,7 +1,7 @@
-package pl.mira.soccerscores.model.match;
+package pl.mira.soccerscores.footballdataclient.model.match;
 
-import pl.mira.soccerscores.model.Competition;
-import pl.mira.soccerscores.model.Season;
+import pl.mira.soccerscores.footballdataclient.model.Competition;
+import pl.mira.soccerscores.footballdataclient.model.Season;
 
 import java.util.Date;
 import java.util.List;

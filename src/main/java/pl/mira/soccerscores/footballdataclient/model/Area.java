@@ -1,4 +1,4 @@
-package pl.mira.soccerscores.model;
+package pl.mira.soccerscores.footballdataclient.model;
 
 public record Area
         (int id,

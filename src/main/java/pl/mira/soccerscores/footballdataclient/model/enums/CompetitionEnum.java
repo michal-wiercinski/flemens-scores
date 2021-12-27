@@ -1,4 +1,4 @@
-package pl.mira.soccerscores.model.enums;
+package pl.mira.soccerscores.footballdataclient.model.enums;
 
 public enum CompetitionEnum {
     PREMIER_LEAGUE("PL", 2021);

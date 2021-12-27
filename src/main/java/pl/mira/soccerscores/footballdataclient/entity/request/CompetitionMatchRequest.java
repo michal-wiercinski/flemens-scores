@@ -1,6 +1,6 @@
 package pl.mira.soccerscores.footballdataclient.entity.request;
 
-import pl.mira.soccerscores.model.enums.StatusEnum;
+import pl.mira.soccerscores.footballdataclient.model.enums.StatusEnum;
 
 import java.time.LocalDate;
 

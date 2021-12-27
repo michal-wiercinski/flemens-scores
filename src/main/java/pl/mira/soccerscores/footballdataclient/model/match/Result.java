@@ -1,4 +1,4 @@
-package pl.mira.soccerscores.model.match;
+package pl.mira.soccerscores.footballdataclient.model.match;
 
 public record Result
         (int homeTeam,

@@ -1,4 +1,4 @@
-package pl.mira.soccerscores.model;
+package pl.mira.soccerscores.footballdataclient.model;
 
 import java.util.Date;
 import java.util.List;

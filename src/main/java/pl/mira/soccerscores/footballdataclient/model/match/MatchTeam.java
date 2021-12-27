@@ -1,6 +1,6 @@
-package pl.mira.soccerscores.model.match;
+package pl.mira.soccerscores.footballdataclient.model.match;
 
-import pl.mira.soccerscores.model.Player;
+import pl.mira.soccerscores.footballdataclient.model.Player;
 
 import java.util.List;
 
